@@ -6,7 +6,7 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.88.1">
-        <title>GudangApp</title>
+        <title>IOTMosque</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/carousel/">
 
@@ -23,28 +23,30 @@
         <link href="assets/styles/home/index.css" rel="stylesheet">
 
         {{-- Icon Title --}}
-        <link rel="icon" type="image/x-icon" href="assets/images/icons/warehouse_icon.png">   
+        <link rel="icon" type="image/x-icon" href="assets/images/icons/mosque.png">   
          
     </head>
     <body>
         <header>
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                <a class="navbar-brand ml-5" href="#"><i class="fas fa-mosque"></i><b> IOT</b>Mosque</a>
+                <a class="navbar-brand ml-4" href="#"><i class="fas fa-mosque"></i><b> IOT</b>Mosque</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="#"><span class="fas fa-home"></span> Home</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item active mr-3">
                             <a class="nav-link" href="#"><span class="fas fa-phone-alt"></span> Contact</a>
                         </li>
                     </ul>
 
                     {{-- User Panel pada Navbar --}}
-                    {{-- @include('templates.partials.navbar_item_userpanel') --}}
+                    <div class="mr-4">
+                        @include('templates.partials.navbar_item_userpanel')
+                    </div>
                 </div>
             </nav>
         </header>

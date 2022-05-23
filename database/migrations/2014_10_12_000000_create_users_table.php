@@ -21,6 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->enum('lev', ['admin', 'editor','public'])->default('public');
+            $table->string('telp')->nullable();
         });
     }
 

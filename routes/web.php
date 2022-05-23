@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SigninController;
+use App\Http\Controllers\SignupController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +17,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    // return view('templates.mainNavbar');
-    return view('templates.homeNavbar');
-});
+// Route::get('/', function () {
+//     // return view('welcome');
+// });
+
+// Home
+Route::get('/', [HomeController::class, 'index']);
+
+// Sign Up
+Route::get('/signup', [SignupController::class, 'index'])->middleware('guest');
+Route::post('/signup', [SignupController::class, 'store']);
+
+// Sign In
+Route::get('/signin', [SigninController::class, 'index'])->name('login')->middleware('guest'); //route bernama login ada di /app/middleware/authenticate.php
+Route::post('/signin', [SigninController::class, 'authenticate']);
+
+// Sign Out
+Route::post('/signout', [SigninController::class, 'signout']);
+
+// Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
