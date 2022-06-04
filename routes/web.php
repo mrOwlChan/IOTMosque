@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Userdetail;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +19,13 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-// Route::get('/', function () {
-//     // return view('welcome');
-// });
+Route::get('/', function () {
+    // return view('welcome');
+    return view('home.index');
+});
 
 // Home
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
 
 // Sign Up
 Route::get('/signup', [SignupController::class, 'index'])->middleware('guest');
@@ -37,3 +40,10 @@ Route::post('/signout', [SigninController::class, 'signout']);
 
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+// Profile
+Route::get('/profile', [ProfileController::class, 'index']);
+Route::get('/profile/{user}/edit', [ProfileController::class, 'edit']);
+Route::patch('/profile/{user}', [ProfileController::class, 'update']);
+Route::patch('/profile/{user}/photo', [ProfileController::class, 'updatePhoto']);
+Route::delete('/profile/{user}', [ProfileController::class, 'destroy']);

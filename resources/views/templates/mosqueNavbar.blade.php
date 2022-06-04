@@ -73,7 +73,10 @@
                 <!-- Brand Logo -->
                 <a href="index3.html" class="brand-link">
                     <img src="{{ asset('assets/images/icons/mosque.png') }}" alt="GudangApp Logo" class="brand-image img-circle elevation-3 bg-light" style="opacity: .8">
-                    <span class="brand-text font-weight-light">IOTMosque</span>
+                    <span class="brand-text font-weight-light">     
+                        <strong>IOT</strong>Mosque
+                        <small style='font-size:12px'>Application</small>
+                    </span>
                 </a>
 
                 <!-- Sidebar -->
@@ -111,31 +114,25 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item has-treeview {{ (Request::is('warehouse') || Request::is('warehouse*')  ? 'menu-open' : '') }}">
-                                <a href="#" class="nav-link {{ (Request::is('warehouse') || Request::is('warehouse*')  ? 'active' : '') }}">
-                                    <i class="nav-icon fas fa-warehouse"></i>
+                            <li class="nav-item has-treeview {{ (Request::is('profile') || Request::is('profile*')  ? 'menu-open' : '') }}">
+                                <a href="#" class="nav-link {{ (Request::is('profile') || Request::is('profile*')  ? 'active' : '') }}">
+                                    <i class="nav-icon fas fa-user-circle"></i>
                                     <p>
-                                        Warehouse
+                                        Akun Saya
                                         <i class="right fas fa-angle-left"></i>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="warehouse" class="nav-link {{ (Request::is('warehouse') || Request::is('warehouse/create')  ? 'active' : '') }}">
-                                            <i class="{{ (Request::is('warehouse') || Request::is('warehouse/create')  ? 'far fa-dot-circle' : 'far fa-circle') }} nav-icon"></i>
-                                            <p>Warehouse List</p>
+                                        <a href="warehouse" class="nav-link {{ (Request::is('profile') || Request::is('profile*')  ? 'active' : '') }}">
+                                            <i class="{{ (Request::is('profile') || Request::is('profile*')  ? 'far fa-dot-circle' : 'far fa-circle') }} nav-icon"></i>
+                                            <p>Profil Saya</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="./index2.html" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
-                                            <p>Warehouse Stocks</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="./index3.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Stock Movements</p>
+                                            <p>Aktivitas Saya</p>
                                         </a>
                                     </li>
                                 </ul>

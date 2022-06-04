@@ -1,8 +1,7 @@
-{{-- Proses pemeriksaan authentifikasi user --}}
 @auth
     {{-- User telah sign-in / ter-authentifikasi --}}
     <ul class="navbar-nav ml-auto">
-        <!-- Notifications Dropdown Menu -->
+        {{-- Notifications Dropdown Menu --}}
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
@@ -29,24 +28,26 @@
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
         </li>
+        {{-- /Notifications Dropdown Menu --}}
+
+        {{-- Menu User --}}
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                @if (auth()->user()->photo == '')
-                    <img src="{{ asset('assets/images/icons/user-icon-avatar.jpg')}}" class="image img-circle" style="height:25px" alt="User Image">
-                    <span class="d-none d-md-inline"> {{ auth()->user()->name}}</span>
-                    
-                @else
-                    <img src="{{ asset('storage/'. auth()->user()->photo) }}" class="image img-circle" style="height:25px" alt="User Image">
-                    <span class="d-none d-md-inline"> {{ auth()->user()->name}}</span>
-                @endif
+                <span class="d-none d-md-inline"><i class="far fa-user-circle fa-lg"></i> {{ auth()->user()->name}}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- User image -->
                 <li class="user-header bg-primary">
-                    <img src="{{ asset('storage/'. auth()->user()->photo) }}" class="img-circle elevation-2" alt="User Image">
+                    @if (auth()->user()->userdetail->photo == '')
+                        {{-- Jika user belum upload photo profil--}}
+                        <img src="{{ asset('assets/images/icons/user.png')}}" class="img-circle elevation-2" alt="User Image">
+                    @else
+                        {{-- Jika user telah upload photo profil --}}
+                        <img src="{{ asset('storage/'. auth()->user()->userdetail->photo) }}" class="img-circle elevation-2" alt="User Image">
+                    @endif
                     <p>
-                        {{ auth()->user()->name}}
-                        <small>{{ auth()->user()->position }}</small>
+                        {{ auth()->user()->name}} 
+                        <small>{{ auth()->user()->email }}</small>
                     </p>
                 </li>
                 <!-- Menu Body -->
@@ -55,7 +56,7 @@
                         {{-- Jika request selain url: /user --}}
                         @if (!(Request::is('user*')))
                             <div class="col-6 text-center">
-                                <a href="/user" class="btn btn-borderless btn-sm p-0 m-0">Profilku</a>
+                                <a href="/profile" class="btn btn-borderless btn-sm p-0 m-0">Profilku</a>
                             </div> 
                             <div class="col-6 text-center">
                                 <a href="#" class="btn btn-borderless btn-sm p-0 m-0">Aktivitas</a>
@@ -64,7 +65,7 @@
                         {{-- Jika url:/user --}}
                         @else
                             <div class="col-6 text-center">
-                                <a href="" class="btn btn-borderless btn-sm disabled p-0 m-0">My Profile</a>
+                                <a href="/myprofile" class="btn btn-borderless btn-sm disabled p-0 m-0">My Profile</a>
                             </div> 
                             <div class="col-6 text-center">
                                 <a href="#" class="btn btn-borderless btn-sm p-0 m-0">Performance</a>
@@ -86,11 +87,14 @@
                 </li>
             </ul>
         </li>
+        {{-- /Menu User --}}
     </ul>
+    {{-- /User telah sign-in / ter-authentifikasi --}}
 @else
-    {{-- User belum sign-in / guest --}}
+    {{-- User belum sign-in atau guest --}}
     <ul class="navbar-nav ml-auto">
         <a class="btn btn-outline-success btn-sm" href="/signup"><span class="fas fa-user-plus"></span> Sign-Up</a>
         <a class="btn btn-outline-primary btn-sm ml-2" href="/signin"><span class="fas fa-sign-in-alt"></span> Sign-In</a>
     </ul>
+    {{-- /User belum sign-in atau guest --}}
 @endauth

@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        
+        'lev',
+        'telp',
+        'photo'
     ];
 
     /**
@@ -41,4 +45,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Relasi dengan table userdetails (model: Userdetail)
+    public function userdetail(){
+        return $this->hasOne(Userdetail::class);
+    }
 }
