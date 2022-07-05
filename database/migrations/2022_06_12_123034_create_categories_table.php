@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserlevelsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateUserlevelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('userlevels', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            $table->enum('level', ['admin','editor','public'])->default('public');
-            $table->string('desc')->nullable();
+            $table->enum('category', ['fiqih', 'tafsir','hadits','science','finance', 'culinary', 'other'])->default('other');
+            $table->text('desc');
+            
         });
     }
 
@@ -29,6 +30,6 @@ class CreateUserlevelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('userlevels');
+        Schema::dropIfExists('categories');
     }
 }

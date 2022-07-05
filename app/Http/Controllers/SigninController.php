@@ -20,7 +20,8 @@ class SigninController extends Controller
     public function authenticate(Request $request){
         // Proses validasi data
         $credentials = $request->validate([
-            'email'     => ['required', 'email:rfc,dns'],
+            'email'     => ['required', 'email'],
+            // 'email'     => ['required', 'email:rfc,dns'],
             'password'  => ['required', 'min:3', 'max:50']
         ]);
 

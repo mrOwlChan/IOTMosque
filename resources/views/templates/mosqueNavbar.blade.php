@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>IOTMosque | Panel Jemaah</title>
+        <title>IOTMosque | Fasilitas</title>
 
         <!-- jQuery -->
         <script src="{{ asset('assets/AdminLTE/plugins/jquery/jquery.min.js')}}"></script>
@@ -114,6 +114,30 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="nav-item has-treeview {{ Request::is('article') ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link {{ Request::is('article') ? 'active' : '' }}">
+                                    <i class="nav-icon far fa-newspaper"></i>
+                                    <p>
+                                        Artikel Dakwah
+                                        <i class="fas fa-angle-left right"></i>
+                                        {{-- <span class="badge badge-info right">6</span> --}}
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="article" class="nav-link {{ (Request::is('article') || Request::is('article*')  ? 'active' : '') }}">
+                                            <i class="{{ (Request::is('article') || Request::is('article*')  ? 'far fa-dot-circle' : 'far fa-circle') }} nav-icon"></i>
+                                            <p>Daftar Artikel</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Buat Artikel</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="nav-item has-treeview {{ (Request::is('profile') || Request::is('profile*')  ? 'menu-open' : '') }}">
                                 <a href="#" class="nav-link {{ (Request::is('profile') || Request::is('profile*')  ? 'active' : '') }}">
                                     <i class="nav-icon fas fa-user-circle"></i>
@@ -124,82 +148,19 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="warehouse" class="nav-link {{ (Request::is('profile') || Request::is('profile*')  ? 'active' : '') }}">
+                                        <a href="/profile" class="nav-link {{ (Request::is('profile') || Request::is('profile*')  ? 'active' : '') }}">
                                             <i class="{{ (Request::is('profile') || Request::is('profile*')  ? 'far fa-dot-circle' : 'far fa-circle') }} nav-icon"></i>
                                             <p>Profil Saya</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="./index2.html" class="nav-link">
+                                        <a href="#" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Aktivitas Saya</p>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            {{-- <li class="nav-item">
-                                <a href="pages/widgets.html" class="nav-link">
-                                    <i class="nav-icon fas fa-th"></i>
-                                    <p>
-                                        Widgets
-                                        <span class="right badge badge-danger">New</span>
-                                    </p>
-                                </a>
-                            </li> --}}
-                            {{-- <li class="nav-item has-treeview">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-copy"></i>
-                                    <p>
-                                        Layout Options
-                                        <i class="fas fa-angle-left right"></i>
-                                        <span class="badge badge-info right">6</span>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="pages/layout/top-nav.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Top Navigation</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Top Navigation + Sidebar</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/layout/boxed.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Boxed</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Fixed Sidebar</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Fixed Navbar</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/layout/fixed-footer.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Fixed Footer</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Collapsed Sidebar</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li> --}}
                             {{-- <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fas fa-chart-pie"></i>

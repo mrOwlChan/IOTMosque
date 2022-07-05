@@ -12,7 +12,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/profile"><i class="fas fa-undo"></i> Home</a></li>
+                    <li class="breadcrumb-item"><a href="/profile"><i class="fas fa-undo"></i> Back</a></li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -74,11 +74,30 @@
                                     </div>
                                 </div>
     
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="birth"><i class="fas fa-birthday-cake"></i> Tanggal Lahir</label>
+                                        @if ($user->userdetail->birth != '')
+                                            <input type="date" class="form-control form-control-sm @error('birth') is-invalid @enderror" name="birth" value="{{ $user->userdetail->birth->format('Y-m-d'), old('birth') }}">
+                                        @else
+                                            <input type="date" class="form-control form-control-sm @error('birth') is-invalid @enderror" name="birth" value="{{ old('birth') }}">
+                                        @endif
+                                        @error('birth')
+                                            <div id="" class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                            </div>{{-- /. Left Col --}}
+                            {{-- Right Col --}}
+                            <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="telp"><i class="fas fa-phone-square-alt"></i> Telepon</label>
-                                            <input type="text" class="form-control form-control-sm @error('telp') is-nvalid @enderror" id="telp" name="telp" value="{{ $user->userdetail->telp, old('telp') }}">
+                                            <input type="text" class="form-control form-control-sm @error('telp') is-invalid @enderror" id="telp" name="telp" value="{{ $user->userdetail->telp, old('telp') }}">
                                             @error('telp')
                                                 <div id="" class="invalid-feedback">
                                                     {{ $message }}
@@ -87,40 +106,12 @@
                                         </div>
                                     </div>
                                 </div>
-    
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <label for="level"><i class="fas fa-key"></i> Password</label>
-                                        <div class="form-group input-group">
-                                            <input type="password" class="form-control form-control-sm" id="password" name="password">
-                                            <div class="input-group-append">
-                                                <button type="button" class="btn btn-outline-primary btn-sm " id="seePassword"><i class="fas fa-eye"></i></button>
-                                            </div>
-                                        </div>                           
-                                    </div>
-                                </div>
-                            </div>{{-- /. Left Col --}}
-                            {{-- Right Col --}}
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label for="birth"><i class="fas fa-birthday-cake"></i> Tanggal Lahir</label>
-                                            <input type="date" class="form-control form-control-sm @error('birth') is-invalid @enderror" id="birth" name="birth" value="{{ $user->userdetail->birth->format('Y-m-d'), old('birth') }}">
-                                            @error('birth')
-                                                <div id="" class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-    
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="address"><i class="fas fa-map-marked-alt"></i> Alamat</label>
-                                            <textarea type="text" class="form-control form-control-sm @error('address') is-invalid @enderror" id="address" name="address" rows="5">{{ $user->userdetail->address, old('address') }}</textarea>
+                                            <textarea type="text" class="form-control form-control-sm @error('address') is-invalid @enderror" id="address" name="address" rows="3">{{ $user->userdetail->address, old('address') }}</textarea>
                                             @error('address')
                                                 <div id="" class="invalid-feedback">
                                                     {{ $message }}
@@ -129,13 +120,25 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <label for="password"><i class="fas fa-key"></i> Password</label>
+                                        <div class="form-group input-group">
+                                            <input type="password" class="form-control form-control-sm" id="password" name="password">
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-outline-primary btn-sm " id="seePassword"><i class="fas fa-eye"></i></button>
+                                            </div>
+                                        </div>                           
+                                    </div>          
+                                </div>
                             </div>
                             {{-- /. Right Col --}}
                         </div>
                         <div class="row">
                             <div class="col-md-2  offset-md-10 mt-3 text-right">
                                 <button type="reset" class="btn btn-danger btn-sm">Batal</button>
-                                <button type="submit" class="btn btn-success btn-sm">Simpan</button>
+                                <button type="submit" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editProfile">Simpan</button>
                             </div>
                         </div>
                     </form>
@@ -149,6 +152,7 @@
     {{--  --}}
     <script>
         $(document).ready(function(){
+            // Melihat password dalam text atau titik
             $('#seePassword').on("click", function(){
                 // Dapatkan nilai attribute elemet dengan selector '#password'
                 var typeInput = document.querySelector('#password').getAttribute("type");
@@ -161,6 +165,22 @@
                 // Jika nilainya adalah 'password', maka rubah menjadi 'text'
                 if(typeInput == 'text'){
                     $('#password').attr('type', 'password');
+                }
+            });
+
+            // Melihat retype_password dalam text atau titik
+            $('#seePreviousPassword').on("click", function(){
+                // Dapatkan nilai attribute elemet dengan selector '#password'
+                var typeInput = document.querySelector('#previous_password').getAttribute("type");
+                
+                // Jika nilainya adalah 'password', maka rubah menjadi 'text'
+                if(typeInput == 'password'){
+                    $('#previous_password').attr('type', 'text');
+                }
+
+                // Jika nilainya adalah 'password', maka rubah menjadi 'text'
+                if(typeInput == 'text'){
+                    $('#previous_password').attr('type', 'password');
                 }
             });
         });

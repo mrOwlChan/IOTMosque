@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -49,5 +49,15 @@ class User extends Authenticatable
     // Relasi dengan table userdetails (model: Userdetail)
     public function userdetail(){
         return $this->hasOne(Userdetail::class);
+    }
+
+    // Relasi dengan table publish_permissions (model: PublishPermission)
+    public function publishPermission(){
+        return $this->hasMany(PublishPermission::class);
+    }
+
+    // Relasi dengan table article_user_links (model: ArticleUserLink)
+    public function articleUserLink(){
+        return $this->hasMany(articleUserLink::class);
     }
 }

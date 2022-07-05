@@ -1,12 +1,13 @@
 <?php
 
+use App\Models\Userdetail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
-use App\Models\Userdetail;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,9 @@ Route::post('/signout', [SigninController::class, 'signout']);
 
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+// Article
+Route::get('/article', [ArticleController::class, 'index']);
 
 // Profile
 Route::get('/profile', [ProfileController::class, 'index']);
