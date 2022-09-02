@@ -61,26 +61,30 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($articles as $article)
+                                        @if ( $articles != '')
+                                            @foreach ($articles as $article)
                                             <tr>
                                                 <td>
                                                     <div class="post">
-                                                        <h4 class="mb-1"><a href="#">{{ $article->title }}</a></h1>
-                                                        @if ($article->subtitle != '')
-                                                            <h6>{{ $article->subtitle }}</h6>
+                                                        @if ( $article->imagetitle == '')
+                                                            <img src="{{ asset('assets/images/imagetitle.png') }}" class="card-img-top mb-2" alt="..." style="height: 250px">
+                                                        @else
+                                                            <img src="{{ asset('storage/'. auth()->user()) }}" class="card-img-top mb-2" alt="..." style="height: 250px">    
                                                         @endif
+                                                        <h4 class="mb-1"><a href="#">{{ $article->title }}</a></h1>
                                                         <p class="text-sm mb-2">Kategori Artikel: <a href="#">{{ $article->category }}</a></p>
                                                         <p>
                                                             {{ $article->excerpt }}
-                                                            <a href="#" class="text-sm ml-2"><i class="fab fa-readme mr-1"></i> Baca Selanjutnya...</a>
+                                                            <a href="/article/{{ $article->id }}" class="text-sm ml-2"><i class="fab fa-readme mr-1"></i> Baca Selanjutnya...</a>
                                                         </p>
                                                         <div class="text-sm mb-0">Penulis: {{ $article->writer }}</div>
-                                                        <div class="text-sm mb-2">Publish: {{ $article->publish_at }}</div>
+                                                        <div class="text-sm mb-2">Publish: {{ Carbon\Carbon::parse($article->publish_at)->diffForHumans() }}</div>
                                                     </div>
                                                     <hr>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -93,7 +97,6 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Judul</th>
-                                            <th>Subjudul</th>
                                             <th style="width: 10%">Kategori</th>
                                             <th>Wkt Posting</th>
                                             <th>Penerbit</th>
@@ -106,7 +109,6 @@
                                             <tr>
                                                 <th scope="row">{{ $loop->iteration }}</td>
                                                 <th scope="row"><a href="">{{ $article->title }}</a></td>
-                                                <th scope="row"><a href="">{{ $article->subtitle }}</a></td>
                                                 <th scope="row"><a href="">{{ $article->category }}</a></td>
                                                 <th scope="row">{{ $article->publish_at }}</td>
                                                 <th scope="row">{{ $article->admin_nm }}</td>

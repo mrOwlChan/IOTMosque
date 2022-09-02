@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Query\JoinClause;
 
+// Category
+use App\Models\Category;
+
+// eloquent sluggable
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+
 class ArticleController extends Controller
 {
     /**
@@ -34,8 +40,8 @@ class ArticleController extends Controller
                             $join->on('articles.id', '=', 'admin.article_id');
                         })
                         ->where('publish_permissions.status_permission', '=', 'publish')
-                        ->groupByRaw('article_user_links.article_id, articles.title, categories.category, publish_permissions.publish_at, publish_permissions.user_id, admin.admin_nm, articles.subtitle, articles.excerpt')
-                        ->select(DB::raw('group_concat(users.name) as writer, articles.title, categories.category, publish_permissions.publish_at, publish_permissions.user_id, admin.admin_nm, articles.subtitle, articles.excerpt'))
+                        ->groupByRaw('article_user_links.article_id, articles.title, categories.category, publish_permissions.publish_at, publish_permissions.user_id, admin.admin_nm, articles.excerpt, articles.imagetitle, articles.id')
+                        ->select(DB::raw('group_concat(users.name) as writer, articles.title, categories.category, publish_permissions.publish_at, publish_permissions.user_id, admin.admin_nm, articles.excerpt, articles.imagetitle, articles.id'))
                         ->get();
 
         // Redirect dengan data
@@ -49,7 +55,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        $dataUser = auth()->user();
+        $dataCat  = Category::all();
+
+        return view('article.articleCreate', ['categories' => $dataCat]);
     }
 
     /**
@@ -60,7 +69,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
@@ -107,4 +116,10 @@ class ArticleController extends Controller
     {
         //
     }
+
+    // eloquent sluggable
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Article::class, 'slug', $request->title);
+        return response()->json(['slug' => $slug]);
+    } 
 }

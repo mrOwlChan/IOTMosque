@@ -6,6 +6,9 @@ use App\Models\ArticleUserLink;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+// eloquent sluggable
+use Cviebrock\EloquentSluggable\Sluggable;
+
 class Article extends Model
 {
     use HasFactory;
@@ -27,4 +30,19 @@ class Article extends Model
         return $this->hasMany(PublishPermission::class);
     }
 
+    // eloquent sluggable
+    use Sluggable;
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }// /.eloquent sluggable
 }

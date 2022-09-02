@@ -114,8 +114,8 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item has-treeview {{ Request::is('article') ? 'menu-open' : '' }}">
-                                <a href="#" class="nav-link {{ Request::is('article') ? 'active' : '' }}">
+                            <li class="nav-item has-treeview {{ Request::is('article') || Request::is('article*')  ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link {{ Request::is('article') | Request::is('article*') ? 'active' : '' }}">
                                     <i class="nav-icon far fa-newspaper"></i>
                                     <p>
                                         Artikel Dakwah
@@ -125,14 +125,14 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="article" class="nav-link {{ (Request::is('article') || Request::is('article*')  ? 'active' : '') }}">
-                                            <i class="{{ (Request::is('article') || Request::is('article*')  ? 'far fa-dot-circle' : 'far fa-circle') }} nav-icon"></i>
+                                        <a href="/article" class="nav-link {{ (Request::is('article') ? 'active' : '') }}">
+                                            <i class="{{ (Request::is('article') ? 'far fa-dot-circle' : 'far fa-circle') }} nav-icon"></i>
                                             <p>Daftar Artikel</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
+                                        <a href="/article/create" class="nav-link {{ (Request::is('article/create') ? 'active' : '') }}">
+                                            <i class="far fa-circle nav-icon {{ (Request::is('article/create') ? 'far fa-dot-circle' : 'far fa-circle') }}"></i>
                                             <p>Buat Artikel</p>
                                         </a>
                                     </li>

@@ -144,37 +144,45 @@ class DatabaseSeeder extends Seeder
         // articles table
         Article::create([
             'title'         => 'Judul Utama 1',
-            'subtitle'      => 'Subjudul Utama 1',
             'category_id'   => '1',
             'slug'          => 'judul-utama-1',
             'excerpt'       => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae laudantium, nulla expedita quis accusantium quod delectus dignissimos sunt id laborum?',
             'body'          => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi consequuntur est vitae iusto similique. Velit ut quia suscipit optio, voluptatibus, distinctio recusandae corporis alias esse, eveniet voluptas blanditiis animi ipsam impedit beatae eos placeat a quisquam! Voluptates obcaecati, sequi sed error nulla nam quaerat quibusdam dolores, molestias necessitatibus fugiat et perferendis incidunt praesentium cupiditate earum alias ex! Laudantium, officiis! Esse modi ad dicta fuga pariatur ipsa rerum accusamus libero ullam hic quod nostrum corporis debitis ipsam, nisi laudantium repudiandae. Repudiandae deserunt inventore soluta commodi nihil aliquid voluptatibus doloremque dolor nemo sit! Necessitatibus aspernatur quia quo. Officiis, quia maxime. Voluptates, nesciunt!',
-            'statusenable'  => '1'
+            'statusenable'  => '1',
+            'imagetitle'    => '',
+            'image1'    => '',
+            'image2'    => '',
+            'image3'    => ''
         ]);
 
         Article::create([
             'title'         => 'Judul Utama 2',
-            'subtitle'      => 'Subjudul Utama 2',
             'category_id'   => '2',
             'slug'          => 'judul-utama-2',
             'excerpt'       => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae laudantium, nulla expedita quis accusantium quod delectus dignissimos sunt id laborum?',
             'body'          => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi consequuntur est vitae iusto similique. Velit ut quia suscipit optio, voluptatibus, distinctio recusandae corporis alias esse, eveniet voluptas blanditiis animi ipsam impedit beatae eos placeat a quisquam! Voluptates obcaecati, sequi sed error nulla nam quaerat quibusdam dolores, molestias necessitatibus fugiat et perferendis incidunt praesentium cupiditate earum alias ex! Laudantium, officiis! Esse modi ad dicta fuga pariatur ipsa rerum accusamus libero ullam hic quod nostrum corporis debitis ipsam, nisi laudantium repudiandae. Repudiandae deserunt inventore soluta commodi nihil aliquid voluptatibus doloremque dolor nemo sit! Necessitatibus aspernatur quia quo. Officiis, quia maxime. Voluptates, nesciunt!',
-            'statusenable'  => '1'
+            'statusenable'  => '1',
+            'imagetitle'    => '',
+            'image1'    => '',
+            'image2'    => '',
+            'image3'    => ''
         ]);
 
         Article::create([
             'title'         => 'Judul Utama 3',
-            'subtitle'      => 'Subjudul Utama 3',
             'category_id'   => '3',
             'slug'          => 'judul-utama-3',
             'excerpt'       => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae laudantium, nulla expedita quis accusantium quod delectus dignissimos sunt id laborum?',
             'body'          => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi consequuntur est vitae iusto similique. Velit ut quia suscipit optio, voluptatibus, distinctio recusandae corporis alias esse, eveniet voluptas blanditiis animi ipsam impedit beatae eos placeat a quisquam! Voluptates obcaecati, sequi sed error nulla nam quaerat quibusdam dolores, molestias necessitatibus fugiat et perferendis incidunt praesentium cupiditate earum alias ex! Laudantium, officiis! Esse modi ad dicta fuga pariatur ipsa rerum accusamus libero ullam hic quod nostrum corporis debitis ipsam, nisi laudantium repudiandae. Repudiandae deserunt inventore soluta commodi nihil aliquid voluptatibus doloremque dolor nemo sit! Necessitatibus aspernatur quia quo. Officiis, quia maxime. Voluptates, nesciunt!',
-            'statusenable'  => '1'
+            'statusenable'  => '1',
+            'imagetitle'    => '',
+            'image1'    => '',
+            'image2'    => '',
+            'image3'    => ''
         ]);
 
         Article::create([
             'title'         => 'Judul Utama 4',
-            'subtitle'      => 'Subjudul Utama 4',
             'category_id'   => '4',
             'slug'          => 'judul-utama-4',
             'excerpt'       => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae laudantium, nulla expedita quis accusantium quod delectus dignissimos sunt id laborum?',

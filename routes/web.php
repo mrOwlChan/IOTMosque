@@ -44,6 +44,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 
 // Article
 Route::get('/article', [ArticleController::class, 'index']);
+Route::get('/article/create', [ArticleController::class, 'create']);
+Route::post('/article/create', [ArticleController::class, 'store']);
+// Create Slug 
+Route::get('/article/create/checkSlug', [ArticleController::class, 'checkSlug'])->middleware('auth');
 
 // Profile
 Route::get('/profile', [ProfileController::class, 'index']);

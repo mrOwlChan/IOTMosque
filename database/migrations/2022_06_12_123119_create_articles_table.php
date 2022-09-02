@@ -18,10 +18,13 @@ class CreateArticlesTable extends Migration
             $table->timestamps();
 
             $table->string('title')->unique();
-            $table->string('subtitle')->nullable();
             $table->string('excerpt');
             $table->string('slug')->unique();
             $table->text('body');
+            $table->string('imagetitle')->nullable();
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
             $table->boolean('statusenable')->default(1);
 
             // Foreign Key
