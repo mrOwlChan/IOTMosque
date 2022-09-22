@@ -44,7 +44,14 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="title">Judul</label>
-                                    <input type="text" class="form-control form-control-sm" id="title" name="title">
+                                    <input type="text" class="form-control form-control-sm @error('title') is-invalid @enderror" id="title" name="title" value={{ old('title') }}>
+                                
+                                    {{-- Pesan Error --}}
+                                    @error('title')
+                                        <div id="" class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -53,19 +60,23 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="slug">Slug</label>
-                                    <input type="text" class="form-control form-control-sm" id="slug" name="slug"  disabled readonly>
-                                    <label for="slug"><p style="font-size: 11px">Slug dibuat otomatis sesuai dengan Judul Artikel<p></label>
+                                    <input type="text" class="form-control form-control-sm" id="slug" name="slug" readonly value="{{ old('slug')}}" >
+                                    <p style="font-size: 11px">Slug dibuat otomatis sesuai dengan Judul Artikel<p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mt-0">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="categories">Kategori</label>
-                                    <select class="custom-select custom-select-sm" id="cat" name="cat">
+                                    <select class="custom-select custom-select-sm" id="category_id" name="category_id">
                                         @foreach ($categories as $cat)
-                                            <option value="{{ $cat->id }}">{{ $cat->category }}</option>
+                                            @if (old('category_id') == $cat->id)
+                                                <option value="{{ $cat->id }}" selected>{{ $cat->category }}</option>                                                
+                                            @else
+                                                <option value="{{ $cat->id }}">{{ $cat->category }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -88,8 +99,13 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="body">Konten Artikel</label>
-                                    <input id="body" type="hidden"  name="body">
+                                    <input id="body" type="hidden"  name="body" value="{{ old('body') }}">
                                     <trix-editor input="body"></trix-editor>
+
+                                    {{-- Pesan Error --}}
+                                    @error('body')
+                                        <p class="text-danger" style="font-size: 13px">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

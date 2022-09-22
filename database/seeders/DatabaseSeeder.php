@@ -142,7 +142,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // articles table
-        Article::create([
+        Article::create([ // id = 1
             'title'         => 'Judul Utama 1',
             'category_id'   => '1',
             'slug'          => 'judul-utama-1',
@@ -155,7 +155,7 @@ class DatabaseSeeder extends Seeder
             'image3'    => ''
         ]);
 
-        Article::create([
+        Article::create([ // id = 2
             'title'         => 'Judul Utama 2',
             'category_id'   => '2',
             'slug'          => 'judul-utama-2',
@@ -168,7 +168,7 @@ class DatabaseSeeder extends Seeder
             'image3'    => ''
         ]);
 
-        Article::create([
+        Article::create([ // id =3
             'title'         => 'Judul Utama 3',
             'category_id'   => '3',
             'slug'          => 'judul-utama-3',
@@ -181,7 +181,7 @@ class DatabaseSeeder extends Seeder
             'image3'    => ''
         ]);
 
-        Article::create([
+        Article::create([ // id = 4
             'title'         => 'Judul Utama 4',
             'category_id'   => '4',
             'slug'          => 'judul-utama-4',
@@ -238,7 +238,7 @@ class DatabaseSeeder extends Seeder
             'status_permission' => 'idle',
             'desc'              => '',
             'article_id'        => '3',
-            'user_id'           => '2'
+            'user_id'           => '3'
         ]);
 
         PublishPermission::create([

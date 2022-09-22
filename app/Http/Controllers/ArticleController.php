@@ -6,13 +6,13 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Str; 
 use Illuminate\Database\Query\JoinClause;
+use App\Models\Category; // Category
+use \Cviebrock\EloquentSluggable\Services\SlugService; // eloquent sluggable
 
-// Category
-use App\Models\Category;
-
-// eloquent sluggable
-use \Cviebrock\EloquentSluggable\Services\SlugService;
+use App\Models\PublishPermission; // Table publish_permissions
+use App\Models\ArticleUserLink; // Table article_user_links
 
 class ArticleController extends Controller
 {
@@ -69,7 +69,33 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $validated = $request->validate([
+            'title'         => ['required', 'max:255'],
+            'slug'          => ['required', 'unique:articles'],
+            'category_id'   => 'required',
+            'body'          => 'required'
+        ]);
+
+        $validated['user_id'] = auth()->user()->id;
+        $validated['excerpt'] = Str::limit(strip_tags($validated['body']), 300, '... '); // Method static untuk mengambil data pada suatu input dengan limit maksimum karakter
+
+        // Proses input data ke table articles
+        $newArticle = Article::create($validated);
+
+        // Proses input data ke table publish_permissions
+        PublishPermission::create([
+            'article_id'        => $newArticle->id,
+            'status_permission' => 'idle',
+            'user_id'           => $validated['user_id']
+        ]);
+
+        // Proses input data ke table article_user_links
+        ArticleUserLink::create([
+            'article_id' => $newArticle->id,
+            'user_id'    => $validated['user_id']
+        ]);
+
+        return redirect('/article');
     }
 
     /**
