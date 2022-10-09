@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTable extends Migration
+class CreateAuthorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('authors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            $table->enum('category', ['fiqih', 'tafsir','hadits','science','finance', 'culinary', 'other'])->default('other');
-            $table->string('name')->nullabe();
-            $table->text('desc');
-            
+            // Foreign Key
+            $table->foreignId('article_id')->constrained(); // mengacu pada tabel articles kolom id
+            $table->foreignId('author_id')->references('id')->on('users')->constrained(); // mengacu pada tabel users kolom id
+
         });
     }
 
@@ -31,6 +31,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('authors');
     }
 }

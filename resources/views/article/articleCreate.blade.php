@@ -35,7 +35,7 @@
     <!-- Main row -->
     <div class="row mx-2">
         <section class="col-lg-12 connectedSortable">
-            <form action="/article/create" method="post">
+            <form action="/article" method="post">
                 @csrf
                 <div class="row">
                     <!-- Left col -->

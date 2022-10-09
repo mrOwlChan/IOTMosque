@@ -74,8 +74,7 @@
                 <a href="index3.html" class="brand-link">
                     <img src="{{ asset('assets/images/icons/mosque.png') }}" alt="GudangApp Logo" class="brand-image img-circle elevation-3 bg-light" style="opacity: .8">
                     <span class="brand-text font-weight-light">     
-                        <strong>IOT</strong>Mosque
-                        <small style='font-size:12px'>Application</small>
+                        <strong>IOT</strong> Mosque
                     </span>
                 </a>
 
@@ -134,6 +133,12 @@
                                         <a href="/article/create" class="nav-link {{ (Request::is('article/create') ? 'active' : '') }}">
                                             <i class="far fa-circle nav-icon {{ (Request::is('article/create') ? 'far fa-dot-circle' : 'far fa-circle') }}"></i>
                                             <p>Buat Artikel</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/article/create" class="nav-link {{ (Request::is('article/create') ? 'active' : '') }}">
+                                            <i class="far fa-circle nav-icon {{ (Request::is('article/create') ? 'far fa-dot-circle' : 'far fa-circle') }}"></i>
+                                            <p>Laporan Artikel</p>
                                         </a>
                                     </li>
                                 </ul>

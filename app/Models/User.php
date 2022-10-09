@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Author;
+use App\Models\Userdetail;
+use App\Models\PublishPermission;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -57,7 +60,7 @@ class User extends Authenticatable
     }
 
     // Relasi dengan table article_user_links (model: ArticleUserLink)
-    public function articleUserLink(){
-        return $this->hasMany(articleUserLink::class);
+    public function author(){
+        return $this->hasMany(Author::class);
     }
 }

@@ -18,13 +18,13 @@ class CreatePublishPermissionsTable extends Migration
             $table->timestamps();
 
             $table->timestamp('publish_at')->nullable();
-            $table->enum('status_permission', ['publish', 'rejected', 'idle'])->default('idle');
+            // $table->enum('status_permission', ['publish', 'rejected', 'idle'])->default('idle');
             $table->text('desc')->nullable();
 
             // Foreign Key
-            $table->foreignId('article_id')->constrained();
-            $table->foreignId('user_id')->constrained(); // mengacu pada $user->userlevel->level = admin
-
+            $table->foreignId('article_id')->constrained(); // mengacu pada tabel articles kolom id
+            $table->foreignId('publisher_id')->references('id')->on('users')->constrained(); // mengacu pada tabel users kolom id
+            $table->foreignId('status')->references('id')->on('status_permissions')->constrained(); // mengacu pada tabel status_permissions kolom id
         });
     }
 

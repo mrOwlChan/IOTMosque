@@ -43,15 +43,16 @@ Route::post('/signout', [SigninController::class, 'signout']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 // Article
-Route::get('/article', [ArticleController::class, 'index']);
-Route::get('/article/create', [ArticleController::class, 'create']);
-Route::post('/article/create', [ArticleController::class, 'store']);
+Route::get('/article', [ArticleController::class, 'index'])->middleware('auth');;
+Route::get('/article/create', [ArticleController::class, 'create'])->middleware('auth');;
+Route::post('/article', [ArticleController::class, 'store'])->middleware('auth');;
+Route::get('/article/{index}', [ArticleController::class, 'show'])->middleware('auth');;
 // Create Slug 
 Route::get('/article/create/checkSlug', [ArticleController::class, 'checkSlug'])->middleware('auth');
 
 // Profile
-Route::get('/profile', [ProfileController::class, 'index']);
-Route::get('/profile/{user}/edit', [ProfileController::class, 'edit']);
-Route::patch('/profile/{user}', [ProfileController::class, 'update']);
-Route::patch('/profile/{user}/photo', [ProfileController::class, 'updatePhoto']);
-Route::delete('/profile/{user}', [ProfileController::class, 'destroy']);
+Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');;
+Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->middleware('auth');;
+Route::patch('/profile/{user}', [ProfileController::class, 'update'])->middleware('auth');;
+Route::patch('/profile/{user}/photo', [ProfileController::class, 'updatePhoto'])->middleware('auth');;
+Route::delete('/profile/{user}', [ProfileController::class, 'destroy'])->middleware('auth');;

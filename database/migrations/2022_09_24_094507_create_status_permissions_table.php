@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArticleUserLinksTable extends Migration
+class CreateStatusPermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateArticleUserLinksTable extends Migration
      */
     public function up()
     {
-        Schema::create('article_user_links', function (Blueprint $table) {
+        Schema::create('status_permissions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            // Foreign Key
-            $table->foreignId('article_id')->constrained();
-            $table->foreignId('user_id')->constrained(); // mengacu pada $user->userlevel->level = editor
-
+            $table->string('status')->default('idle');;
+            $table->string('name')->nullable();
+            $table->text('desc')->nullable();
         });
     }
 
@@ -31,6 +30,6 @@ class CreateArticleUserLinksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('article_user_links');
+        Schema::dropIfExists('status_permissions');
     }
 }

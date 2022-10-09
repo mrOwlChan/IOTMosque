@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\ArticleUserLink;
+use App\Models\Category;
+use App\Models\Author;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 // eloquent sluggable
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Article extends Model
 {
@@ -21,8 +22,8 @@ class Article extends Model
     }
 
     // Relasi dengan table article_user_links (model: ArticleUserLink)
-    public function articleUserLink(){
-        return $this->hasMany(ArticleUserLink::class);
+    public function author(){
+        return $this->hasMany(Author::class);
     }
 
     // Relasi dengan table publish_permissions (model: PublishPermission)
